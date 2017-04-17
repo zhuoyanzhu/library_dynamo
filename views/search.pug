@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  img(src=user.picture)
+  h2 Welcome #{user.nickname}!
+  br
+  a(href='/logout') Logout
+  
+  head
+    title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
+    script(src='js/vue.min.js')
+  style.
+    .row {
+    margin-bottom: 15px;
+    }
+  body
+    .container
+      h1.title.text-center Search
+      .form-group
+        .row.text-center
+          label(for='name') Book Name
+          |  
+          input#name(type='text')
+        .row.text-center
+          label(for='author') Author
+          |  
+          input#author(type='text')
+        .row.text-center
+          label(for='lang') Language
+          |  
+          select#lang
+            option(value='any') Any Language
+            option(value='English') English
+            option(value='French') French
+            option(value='Chinese') Chinese
+            option(value='Spanish') Spanish
+      .row.text-center
+        button#search.btn.btn-default(type='button') Search Book
+      table#table.table
+        thead
+          tr
+            th Book&apos;s ID
+            th Book&apos;s Name
+            th Author
+            th Language
+            th Available Number
+        tbody
+          tr(v-for='book in books')
+            td {{book.ID}}
+            td {{book.title}}
+            td {{book.author}}
+            td {{book.lang}}
+            td {{book.num}}
+    script(src='js/search-page.js')
+

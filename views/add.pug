@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  img(src=user.picture)
+  h2 Welcome #{user.nickname}!
+  br
+  a(href='/logout') Logout
+  
+  head
+    title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
+  style.
+    .row {
+    margin-bottom: 15px;
+    }
+  body
+    .container
+      h1.title.text-center Add
+      .form-group
+        .row.text-center
+          label(for='id') Book ID
+          |  
+          input#id(type='text', required='')
+        .row.text-center
+          label(for='name') Book Name
+          |  
+          input#name(type='text', required='')
+        .row.text-center
+          label(for='author') Author
+          |  
+          input#author(type='text', required='')
+        .row.text-center
+          label(for='lang') Language
+          |  
+          select#lang
+            option(value='English') English
+            option(value='French') French
+            option(value='Chinese') Chinese
+            option(value='Spanish') Spanish
+        .row.text-center
+          label(for='number') Available Number
+          |  
+          input#number(type='text', required='', min='1', max='10')
+      .row.text-center
+        button#add.btn.btn-default(type='button') ADD Book
+    script(src='js/add-page.js')
+

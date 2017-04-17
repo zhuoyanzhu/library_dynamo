@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h2 Welcome {user.nickname}!
+  br
+  a(href='/logout') Logout
+  
+  head
+    title
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
+    script(src='js/vue.min.js')
+  body
+    .container
+      h1.title Books Info
+      table#table.table
+        thead
+          tr
+            th Book&apos;s ID
+            th Book&apos;s Name
+            th Author
+            th Language
+            th Available Number
+            th Borrow
+        tbody
+          tr(v-for='book in books')
+            td {{book.ID}}
+            td {{book.title}}
+            td {{book.author}}
+            td {{book.lang}}
+            td {{book.num}}
+            td 
+              button.btn.btn-default(type='button', v-on:click='clickbutton(book.ID, user.nickname)') Borrow Book
+    script(src='js/show-page.js')
