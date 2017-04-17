@@ -46,11 +46,9 @@ $(document).ready(function () {
 	// 		});
 	// 	}
 	// });
-	$.get(`${baseUrl}/`, () => {
-		vm.user = "{{ user }}";
+	$.get(`${baseUrl}/user`, (msg) => {
+		vm.user = msg;
 	});
-	
-
 })
 
 function clickbutton(id, name) {
@@ -58,6 +56,7 @@ function clickbutton(id, name) {
 		ID: id,
 		borrower: name
 	}
+	console.log(name);
 	$.post(`/show/borrow`, params, (msg, status) => {
 		alert(msg);
 	});

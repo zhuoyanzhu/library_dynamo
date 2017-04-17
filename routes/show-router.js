@@ -9,6 +9,10 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
   res.render('show', { user: req.user });
 });
 
+router.get('/user', ensureLoggedIn, function(req, res, next) {
+  res.send(req.user);
+});
+
 router.get('/list', (req, res) => {
 	db.getAll((err, data) => {
 		if (err) console.error(err);
