@@ -27,7 +27,7 @@ $(document).ready(function () {
 
 	// }
 
-	const baseUrl = '/show';
+	const baseUrl = '/books';
 	$.get(`${baseUrl}/list`, (msg) => {
 		vm.books = JSON.parse(msg);
 	});

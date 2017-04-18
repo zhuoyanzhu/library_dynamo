@@ -57,7 +57,7 @@ function clickbutton(id, name) {
 		borrower: name
 	}
 	console.log(name);
-	$.post(`/show/borrow`, params, (msg, status) => {
+	$.post(`/deal/borrow`, params, (msg, status) => {
 		alert(msg);
 	});
 
