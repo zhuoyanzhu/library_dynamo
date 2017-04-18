@@ -49,6 +49,7 @@ block content
             th Author
             th Language
             th Available Number
+            th Borrow
         tbody
           tr(v-for='book in books')
             td {{book.ID}}
@@ -56,5 +57,7 @@ block content
             td {{book.author}}
             td {{book.lang}}
             td {{book.num}}
+            td 
+              button.btn.btn-default(type='button', v-on:click='clickbutton(book.ID, user.id)') Borrow Book
     script(src='js/search-page.js')
 

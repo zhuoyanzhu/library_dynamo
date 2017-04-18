@@ -8,6 +8,10 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
   res.render('search', { user: req.user });
 });
 
+router.get('/user', ensureLoggedIn, function(req, res, next) {
+  res.send(req.user);
+});
+
 router.post('/search', searchHandler);
 
 function searchHandler(req, res) {

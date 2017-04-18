@@ -11,9 +11,9 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 const uuid = require('node-uuid');
 
-const tableName = 'Library';
+const tableName = 'Users';
 
-module.exports.update = (key, obj, cb) => {
+module.exports.borrow = (key, obj, cb) => {
 	let params = {
 		TableName: tableName,
 		Key: key,
@@ -99,19 +99,4 @@ module.exports.search = (obj, cb) => {
 	};
 
 	docClient.scan(params, cb);
-}
-
-
-module.exports.getAllByID = (cb, obj) => {
-	let params = {
-		TableName: tableName,
-		KeyConditionExpression: "#id in :ids",
-		ExpressionAttributeNames:{
-			"#id": "ID"
-		},
-		ExpressionAttributeValues: {
-			":ids":obj.ids
-		}
-	};
-	docClient.query(params, cb);
 }

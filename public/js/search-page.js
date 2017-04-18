@@ -2,12 +2,15 @@ $(document).ready(function () {
 	const baseUrl = '/search';
 
 	let books = [];
+	let user = {};
 	let vm = new Vue({
 		el: '#table',
 		data: {
-			books: books
+			books: books,
+			user: user
 		}
 	});
+
 	$('#search').click(() => {
 		let name = $('#name').val()
 		let author = $('#author').val()
@@ -23,4 +26,20 @@ $(document).ready(function () {
 			});
 		}
 	});
+	
+	$.get(`/show/user`, (msg) => {
+		vm.user = msg;
+	});
 });
+
+function clickbutton(id, name) {
+	let params = {
+		ID: id,
+		borrower: name
+	}
+	console.log(name);
+	$.post(`/show/borrow`, params, (msg, status) => {
+		alert(msg);
+	});
+
+}

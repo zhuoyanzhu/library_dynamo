@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h2 Welcome {user.nickname}!
+  img(src=user.picture)
+  h2 Welcome #{user.nickname}!
   br
   a(href='/logout') Logout
   
@@ -33,5 +34,5 @@ block content
             td {{book.lang}}
             td {{book.num}}
             td 
-              button.btn.btn-default(type='button', v-on:click='clickbutton(book.ID, user.nickname)') Borrow Book
+              button.btn.btn-default(type='button', v-on:click='clickbutton(book.ID, user.id)') Borrow Book
     script(src='js/show-page.js')
